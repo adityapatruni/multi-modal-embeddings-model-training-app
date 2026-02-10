@@ -1,0 +1,47 @@
+seed: 1337
+
+paths:
+  data_root: data
+  train_file: data/train.csv
+  val_file: data/val.csv
+  output_dir: runs/exp1
+
+train:
+  batch_size: 64
+  accumulation_steps: 1
+  num_workers: 4
+  max_epochs: 10
+  lr: 0.0003
+  weight_decay: 0.01
+  temperature: 0.07
+  grad_clip: 1.0
+  log_every: 50
+  eval_every: 1
+  amp: true
+
+model:
+  image_encoder: resnet50
+  image_embed_dim: 2048
+  text_vocab_size: 30000
+  text_max_len: 64
+  text_embed_dim: 512
+  text_num_layers: 4
+  text_num_heads: 8
+  text_ffn_dim: 2048
+  text_dropout: 0.1
+  projection_dim: 512
+
+augment:
+  image_size: 224
+  crop_scale_min: 0.6
+  crop_scale_max: 1.0
+
+tracking:
+  tensorboard: false
+  csv: true
+  jsonl: true
+  system_stats: true
+  mlflow: true
+  experiment: mm-embed
+  run_name: null
+  tracking_uri: null
